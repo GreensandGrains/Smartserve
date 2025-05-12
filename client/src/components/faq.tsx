@@ -190,7 +190,7 @@ export default function FAQ() {
                 <motion.div
                   animate={{ 
                     rotate: openIndex === index ? 180 : 0,
-                    backgroundColor: openIndex === index ? "rgba(79, 70, 229, 0.1)" : "transparent"
+                    backgroundColor: openIndex === index ? "rgba(79, 70, 229, 0.1)" : "rgba(0, 0, 0, 0)"
                   }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="flex items-center justify-center w-8 h-8 rounded-full"
@@ -207,8 +207,28 @@ export default function FAQ() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-4">
-                      <p className="text-gray-300">{item.answer}</p>
+                    <div className="px-8 pb-6">
+                      <motion.div
+                        className="relative overflow-hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                      >
+                        {/* Left border accent */}
+                        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary/50 via-primary/20 to-transparent"></div>
+                        
+                        {/* Content with subtle gradient background */}
+                        <div className="pl-5 py-2 rounded-r-lg bg-gradient-to-r from-neutral-700/20 to-transparent">
+                          <motion.p 
+                            className="text-gray-300"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: 0.2 }}
+                          >
+                            {item.answer}
+                          </motion.p>
+                        </div>
+                      </motion.div>
                     </div>
                   </motion.div>
                 )}
