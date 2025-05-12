@@ -19,18 +19,34 @@ export default function CTA() {
             Join the hundreds of communities already using SmartServe's custom Discord bots.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
+            <motion.a 
               href="#contact" 
-              className="px-8 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-primary/20 font-medium"
+              className="px-8 py-3 bg-primary text-white rounded-full font-medium btn-animated glow-effect"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.5,
+                delay: 0.2
+              }}
             >
-              Get Started Today
-            </a>
-            <a 
+              <span className="relative z-10">Get Started Today</span>
+            </motion.a>
+            <motion.a 
               href="#services" 
-              className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-white/10 transition-all duration-300 font-medium"
+              className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-full font-medium btn-animated"
+              whileHover={{ scale: 1.05, borderColor: "rgba(255, 255, 255, 0.8)" }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.5,
+                delay: 0.4
+              }}
             >
-              Explore Services
-            </a>
+              <span className="relative z-10">Explore Services</span>
+            </motion.a>
           </div>
         </motion.div>
       </div>

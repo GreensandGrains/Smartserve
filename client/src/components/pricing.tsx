@@ -100,17 +100,22 @@ export default function Pricing() {
                 ))}
               </ul>
               <div className="text-center">
-                <a 
+                <motion.a 
                   href="#contact" 
                   className={`
-                    inline-block w-full px-6 py-3 rounded-full transition-all duration-300 font-medium
+                    inline-block w-full px-6 py-3 rounded-full font-medium btn-animated relative overflow-hidden
                     ${plan.popular 
-                      ? 'bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-primary/20' 
-                      : 'border border-primary text-white hover:bg-primary hover:text-white'}
+                      ? 'bg-primary text-white glow-effect' 
+                      : 'border border-primary text-white'}
                   `}
+                  whileHover={{ 
+                    scale: 1.03,
+                    boxShadow: "0px 8px 30px rgba(79, 70, 229, 0.4)"
+                  }}
+                  whileTap={{ scale: 0.97 }}
                 >
-                  {plan.cta}
-                </a>
+                  <span className="relative z-10">{plan.cta}</span>
+                </motion.a>
               </div>
             </motion.div>
           ))}

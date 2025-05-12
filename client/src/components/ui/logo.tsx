@@ -11,11 +11,22 @@ export default function Logo({ size = "normal" }: { size?: "small" | "normal" | 
     <div className={`${dimensions[size]} relative flex items-center justify-center`}>
       <motion.div 
         className="relative"
-        animate={{ rotateY: 360 }}
+        animate={{ 
+          rotateY: 360,
+          scale: [1, 1.05, 1],
+        }}
         transition={{ 
-          duration: 8, 
-          ease: "linear", 
-          repeat: Infinity 
+          rotateY: {
+            duration: 8, 
+            ease: "linear", 
+            repeat: Infinity 
+          },
+          scale: {
+            duration: 3,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "reverse"
+          }
         }}
       >
         <svg 

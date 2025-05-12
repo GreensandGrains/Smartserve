@@ -45,13 +45,15 @@ export default function Showcase() {
         
         <motion.a
           href="#portfolio"
-          className="inline-block px-8 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-primary/20 font-medium"
+          className="inline-block px-8 py-3 bg-primary text-white rounded-full font-medium btn-animated glow-effect"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          View Our Work
+          <span className="relative z-10">View Our Work</span>
         </motion.a>
       </div>
     </section>

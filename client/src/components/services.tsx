@@ -110,12 +110,14 @@ export default function Services() {
                 ))}
               </ul>
               <div className="mt-6 text-center">
-                <a 
+                <motion.a 
                   href={service.ctaLink} 
-                  className={`inline-block px-6 py-2 ${service.primary ? 'bg-primary text-white' : 'text-white border border-primary'} rounded-full hover:bg-primary hover:text-white transition-all duration-300`}
+                  className={`inline-block px-6 py-2 ${service.primary ? 'bg-primary text-white' : 'text-white border border-primary'} rounded-full btn-animated relative overflow-hidden`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {service.cta}
-                </a>
+                  <span className="relative z-10">{service.cta}</span>
+                </motion.a>
               </div>
             </motion.div>
           ))}

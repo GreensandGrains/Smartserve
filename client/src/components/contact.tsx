@@ -163,13 +163,18 @@ export default function Contact() {
                 )}
               </div>
               
-              <button 
+              <motion.button 
                 type="submit" 
-                className="w-full px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-primary/20 font-medium disabled:opacity-70"
+                className="w-full px-6 py-3 bg-primary text-white rounded-full font-medium btn-animated glow-effect relative overflow-hidden disabled:opacity-70"
                 disabled={isSubmitting}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
+                <span className="relative z-10">{isSubmitting ? "Sending..." : "Send Message"}</span>
+              </motion.button>
             </form>
           </motion.div>
 

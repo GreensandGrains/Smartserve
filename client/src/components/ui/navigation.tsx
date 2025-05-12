@@ -36,10 +36,10 @@ export default function Navigation() {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link href="/">
-            <a className="text-white text-2xl font-bold flex items-center">
+            <div className="text-white text-2xl font-bold flex items-center cursor-pointer">
               <Logo />
               <span className="ml-2"><span className="text-primary">Smart</span>Serve</span>
-            </a>
+            </div>
           </Link>
           
           {/* Mobile Menu Button */}
