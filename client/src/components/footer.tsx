@@ -38,10 +38,10 @@ export default function Footer() {
           <div>
             <div className="mb-4">
               <Link href="/">
-                <a className="text-white text-2xl font-bold flex items-center">
+                <div className="text-white text-2xl font-bold flex items-center cursor-pointer">
                   <Logo size="small" />
                   <span className="ml-2"><span className="text-primary">Smart</span>Serve</span>
-                </a>
+                </div>
               </Link>
             </div>
             <p className="text-gray-400 mb-4">
