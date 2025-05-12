@@ -199,18 +199,34 @@ export default function Pricing() {
                 {/* Decorative divider */}
                 <div className="w-16 h-1 bg-gradient-to-r from-primary/80 to-primary/20 rounded-full mx-auto mt-6"></div>
               </div>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 relative z-10">
                 {plan.features.map((feature, fidx) => (
-                  <li key={fidx} className="flex items-start">
+                  <motion.li 
+                    key={fidx} 
+                    className={`flex items-start p-2 rounded-lg transition-all ${feature.included ? 'bg-neutral-800/50' : 'bg-neutral-800/20'}`}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + (fidx * 0.1) }}
+                    whileHover={feature.included ? { x: 5 } : {}}
+                  >
                     {feature.included ? (
-                      <Check className="w-5 h-5 text-success mt-1 mr-3" />
+                      <motion.div
+                        className="flex items-center justify-center w-5 h-5 bg-success/20 rounded-full mt-0.5 mr-3"
+                        animate={feature.included ? { scale: [0.9, 1.1, 0.9] } : {}}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <Check className="w-3 h-3 text-success" />
+                      </motion.div>
                     ) : (
-                      <X className="w-5 h-5 text-error mt-1 mr-3" />
+                      <div className="flex items-center justify-center w-5 h-5 bg-error/10 rounded-full mt-0.5 mr-3">
+                        <X className="w-3 h-3 text-error/70" />
+                      </div>
                     )}
-                    <span className={feature.included ? 'text-gray-300' : 'text-gray-400'}>
+                    <span className={feature.included ? 'text-gray-200' : 'text-gray-400'}>
                       {feature.text}
                     </span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
               <div className="text-center">

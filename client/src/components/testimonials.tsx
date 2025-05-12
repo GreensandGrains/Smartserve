@@ -41,8 +41,75 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section id="testimonials" className="py-24 bg-neutral-900 relative">
-      <div className="container mx-auto px-4">
+    <section id="testimonials" className="py-24 bg-neutral-900 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 hex-grid opacity-20"></div>
+        
+        {/* Gradient overlays */}
+        <motion.div 
+          className="absolute -left-[20%] top-[20%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[100px]"
+          animate={{ 
+            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        <motion.div 
+          className="absolute -right-[20%] bottom-[20%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[100px]"
+          animate={{ 
+            opacity: [0.2, 0.4, 0.2],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ 
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        />
+        
+        {/* Floating quote marks */}
+        <motion.div
+          className="absolute top-[15%] left-[10%] text-primary/10 text-[120px] font-serif"
+          animate={{
+            y: [0, -15, 0],
+            rotate: [-5, 5, -5],
+            opacity: [0.1, 0.15, 0.1]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          "
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-[15%] right-[10%] text-primary/10 text-[120px] font-serif"
+          animate={{
+            y: [0, -15, 0],
+            rotate: [5, -5, 5],
+            opacity: [0.1, 0.15, 0.1]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        >
+          "
+        </motion.div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <SectionHeading 
           title="What Our Clients Say" 
           description="Hear from Discord server owners who have used our services."
@@ -58,33 +125,106 @@ export default function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className="bg-neutral-800 rounded-2xl p-8 shadow-xl"
+                className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-2xl p-8 shadow-xl border border-neutral-700 relative overflow-hidden"
+                style={{
+                  boxShadow: "0 10px 40px -10px rgba(0, 0, 0, 0.5)"
+                }}
               >
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 rounded-full bg-neutral-700 flex items-center justify-center">
+                {/* Testimonial decorative quotes */}
+                <div className="absolute -top-2 -left-2 text-5xl text-primary/20 font-serif">"</div>
+                <div className="absolute -bottom-10 -right-2 text-5xl text-primary/20 font-serif">"</div>
+                
+                {/* Content overlay with animated gradient */}
+                <motion.div 
+                  className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+                  style={{
+                    background: "radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.1) 0%, transparent 70%)",
+                  }}
+                  animate={{
+                    opacity: [0.05, 0.1, 0.05]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                {/* User info with animation */}
+                <motion.div 
+                  className="flex items-center mb-8"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <motion.div 
+                    className="w-16 h-16 rounded-full bg-gradient-to-br from-neutral-700 to-neutral-800 flex items-center justify-center shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <User className="w-8 h-8 text-primary" />
-                  </div>
+                  </motion.div>
                   <div className="ml-4">
-                    <h4 className="font-bold text-lg">{testimonials[currentSlide].name}</h4>
-                    <p className="text-gray-400">{testimonials[currentSlide].role}</p>
+                    <motion.h4 
+                      className="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                    >
+                      {testimonials[currentSlide].name}
+                    </motion.h4>
+                    <motion.p 
+                      className="text-gray-400"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.2 }}
+                    >
+                      {testimonials[currentSlide].role}
+                    </motion.p>
                   </div>
-                  <div className="ml-auto">
+                  <motion.div 
+                    className="ml-auto"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                  >
                     <div className="flex text-primary">
                       {[...Array(Math.floor(testimonials[currentSlide].stars))].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
+                        <motion.div 
+                          key={i}
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.2, delay: 0.3 + (i * 0.1) }}
+                        >
+                          <Star className="w-4 h-4 fill-current" />
+                        </motion.div>
                       ))}
                       {testimonials[currentSlide].stars % 1 > 0 && (
-                        <div className="relative">
+                        <motion.div 
+                          className="relative"
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.2, delay: 0.3 + (Math.floor(testimonials[currentSlide].stars) * 0.1) }}
+                        >
                           <Star className="w-4 h-4 text-neutral-600" />
                           <div className="absolute top-0 left-0 overflow-hidden" style={{ width: "50%" }}>
                             <Star className="w-4 h-4 fill-current text-primary" />
                           </div>
-                        </div>
+                        </motion.div>
                       )}
                     </div>
-                  </div>
-                </div>
-                <p className="text-gray-300 italic">{testimonials[currentSlide].content}</p>
+                  </motion.div>
+                </motion.div>
+                
+                {/* Testimonial text with animation */}
+                <motion.p 
+                  className="text-gray-300 italic relative z-10"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  {testimonials[currentSlide].content}
+                </motion.p>
               </motion.div>
             </AnimatePresence>
 
