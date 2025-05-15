@@ -198,7 +198,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email</p>
-                    <p className="text-white">contact@smartserve.com</p>
+                    <p className="text-white">thethuglone@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -216,8 +216,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Support Hours</p>
-                    <p className="text-white">Monday - Friday, 9AM - 6PM EST</p>
-                  </div>
+                    <p className="text-white">Monday - Friday,  ALL TIME </p>
+                  </div> 
                 </div>
               </div>
             </div>
