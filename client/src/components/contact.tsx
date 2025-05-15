@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import emailjs from '@emailjs/browser';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
@@ -44,7 +45,17 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      await apiRequest("POST", "/api/contact", data);
+      await emailjs.send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        {
+          from_name: data.name,
+          from_email: data.email,
+          service: data.service,
+          message: data.message,
+        },
+        "YOUR_PUBLIC_KEY"
+      );
       
       toast({
         title: "Message Sent",
