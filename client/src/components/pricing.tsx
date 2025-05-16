@@ -18,7 +18,7 @@ const plans = [
   },
   {
     name: "Standard",
-    price: "19.99",
+    price: "5.00",
     features: [
       { text: "Advanced bot functionality", included: true },
       { text: "Unlimited custom commands", included: true },
@@ -31,7 +31,7 @@ const plans = [
   },
   {
     name: "Premium",
-    price: "49.99",
+    price: "9.99",
     features: [
       { text: "Custom-built bot", included: true },
       { text: "Advanced API integrations", included: true },
