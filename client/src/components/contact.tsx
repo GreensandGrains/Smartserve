@@ -249,7 +249,7 @@ export default function Contact() {
                   <FaDiscord className="w-5 h-5 text-white" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://discord.gg/eDchvQNaqk" 
                   className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-primary transition-colors duration-300"
                 >
                   <Github className="w-5 h-5 text-white" />
