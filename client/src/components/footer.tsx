@@ -22,10 +22,10 @@ const footerLinks = {
     { label: "Custom Integrations", href: "#services" }
   ],
   legal: [
-    { label: "Terms of Service", href: "#" },
-    { label: "Privacy Policy", href: "#" },
-    { label: "Refund Policy", href: "#" },
-    { label: "Cookie Policy", href: "#" }
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Fair Use Policy", href: "/fair-use" },
+    { label: "Refund Policy", href: "#" }
   ]
 };
 
