@@ -7,6 +7,41 @@ import { fromZodError } from "zod-validation-error";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission
+  // Discord OAuth callback
+app.get("/api/auth/discord/callback", async (req, res) => {
+  const code = req.query.code as string;
+  if (!code) return res.status(400).send("Missing code");
+
+  try {
+    const tokenRes = await fetch("https://discord.com/api/oauth2/token", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        client_id: process.env.DISCORD_CLIENT_ID!,
+        client_secret: process.env.DISCORD_CLIENT_SECRET!,
+        grant_type: "authorization_code",
+        code,
+        redirect_uri: "https://your-domain.com/api/auth/discord/callback",
+      }),
+    });
+
+    const tokenData = await tokenRes.json();
+
+    const userRes = await fetch("https://discord.com/api/users/@me", {
+      headers: { Authorization: `Bearer ${tokenData.access_token}` },
+    });
+    const userData = await userRes.json();
+
+    console.log("Discord user:", userData);
+
+    // Redirect or handle session
+    res.redirect(`/dashboard?user=${encodeURIComponent(userData.username)}`);
+  } catch (err) {
+    console.error("OAuth error:", err);
+    res.status(500).send("OAuth failed");
+  }
+});
+
   app.post("/api/contact", async (req, res) => {
     try {
       // Validate request body
