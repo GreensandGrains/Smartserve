@@ -4,7 +4,7 @@ import { FaDiscord } from "react-icons/fa";
 
 export function DiscordLoginButton() {
   const handleLogin = () => {
-    window.location.href = '/auth/discord';
+    window.location.href = 'https://smartserve-oxps.onrender.com';
   };
 
   return (
